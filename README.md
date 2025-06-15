@@ -1,2 +1,2 @@
-# tranvideo
+# Tran Video
 自动翻译外语视频到中文，可选择SRT字幕文件或者是嵌入的视频
