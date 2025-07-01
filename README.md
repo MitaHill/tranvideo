@@ -254,6 +254,39 @@ curl http://localhost:5000/api/tranpy/config
 
 本项目采用 MIT 许可证 - 查看 [LICENSE](LICENSE) 文件了解详情。
 
+## 🔑API调用方式
+
+
+这是一个基于Flask的视频字幕处理服务，主要API包括：
+
+### 核心处理
+- `POST /api/process/srt/<invite_code>` - 生成SRT字幕文件
+- `POST /api/process/video/<invite_code>` - 生成带字幕的视频
+- `POST /api/batch/process/<invite_code>` - 批量处理多个文件
+
+### 状态查询
+- `GET /api/task/<task_id>` - 查询单个任务状态
+- `GET /api/batch/<batch_id>` - 查询批量任务状态
+- `GET /api/status` - 查询系统处理状态
+
+### 下载
+- `GET /api/download/srt/<filename>` - 下载SRT文件
+- `GET /api/download/video/<filename>` - 下载视频文件
+- `GET /api/batch/download/<batch_id>` - 下载批量处理结果
+
+## 配置管理
+- `GET /api/tranpy/config-ollama-api/<api_url>` - 配置Ollama API地址
+- `GET /api/tranpy/config-ollama-model/<model_name>` - 配置Ollama模型
+- `GET /api/tranpy/config` - 获取当前配置
+
+## 辅助功能
+- `GET /api/invitation/check/<invite_code>` - 验证邀请码及可用时长
+- `GET /api/whisper/health` - 检查Whisper服务状态
+- `POST /api/administrator/delete_all_cache` - 清理缓存文件
+
+系统使用邀请码控制访问，支持视频时长限制，集成Whisper进行语音识别和翻译。
+
+
 ## 📞 联系方式
 
 - **邮箱**: kindmitaishere@gmail.com
