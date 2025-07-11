@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API 文档 - 视频字幕处理系统</title>
+    <link rel="stylesheet" href="css/api-docs.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>API 文档</h1>
+            <div class="nav-links">
+                <a href="index.html" class="btn btn-primary">返回主页</a>
+                <a href="faq.html" class="btn btn-secondary">常见问题</a>
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <nav class="nav-menu">
+                <h3>API 接口</h3>
+                <ul>
+                    <li><a href="#invitation" onclick="showSection('invitation')">邀请码验证</a></li>
+                    <li><a href="#status" onclick="showSection('status')">系统状态</a></li>
+                    <li><a href="#single-process" onclick="showSection('single-process')">单文件处理</a></li>
+                    <li><a href="#batch-process" onclick="showSection('batch-process')">批量处理</a></li>
+                    <li><a href="#task-query" onclick="showSection('task-query')">任务查询</a></li>
+                    <li><a href="#download" onclick="showSection('download')">文件下载</a></li>
+                    <li><a href="#config" onclick="showSection('config')">配置管理</a></li>
+                    <li><a href="#admin" onclick="showSection('admin')">管理功能</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="content">
+            <!-- 邀请码验证 -->
+            <section id="invitation" class="api-section active">
+                <h2>邀请码验证</h2>
+                <div class="endpoint">
+                    <div class="method get">GET</div>
+                    <code>/api/invitation/check/{invite_code}</code>
+                </div>
+                <p class="description">验证邀请码的有效性和剩余时长</p>
+
+                <h4>参数</h4>
+                <table class="params-table">
+                    <tr>
+                        <th>参数</th>
+                        <th>类型</th>
+                        <th>位置</th>
+                        <th>描述</th>
+                    </tr>
+                    <tr>
+                        <td>invite_code</td>
+                        <td>string</td>
+                        <td>路径</td>
+                        <td>邀请码字符串</td>
+                    </tr>
+                </table>
+
+                <h4>响应示例</h4>
+                <pre class="code-block"><code>{
+  "invite_code": "ABC123",
+  "available_minutes": 120,
+  "valid": true
+}</code></pre>
+            </section>
+
+            <!-- 系统状态 -->
+            <section id="status" class="api-section">
+                <h2>系统状态</h2>
+                <div class="endpoint">
+                    <div class="method get">GET</div>
+                    <code>/api/status</code>
+                </div>
+                <p class="description">获取系统当前状态和队列信息</p>
+
+                <h4>响应示例</h4>
+                <pre class="code-block"><code>{
+  "busy": false,
+  "queue_length": 2,
+  "whisper_available": true
+}</code></pre>
+
+                <div class="endpoint">
+                    <div class="method get">GET</div>
+                    <code>/api/whisper/health</code>
+                </div>
+                <p class="description">检查Whisper服务健康状态</p>
+
+                <h4>响应示例</h4>
+                <pre class="code-block"><code>{
+  "available": true
+}</code></pre>
+            </section>
+
+            <!-- 单文件处理 -->
+            <section id="single-process" class="api-section">
+                <h2>单文件处理</h2>
+
+                <div class="endpoint">
+                    <div class="method post">POST</div>
+                    <code>/api/process/srt/{invite_code}</code>
+                </div>
+                <p class="description">处理单个视频文件，生成SRT字幕文件</p>
+
+                <h4>参数</h4>
+                <table class="params-table">
+                    <tr>
+                        <th>参数</th>
+                        <th>类型</th>
+                        <th>位置</th>
+                        <th>描述</th>
+                    </tr>
+                    <tr>
+                        <td>invite_code</td>
+                        <td>string</td>
+                        <td>路径</td>
+                        <td>有效的邀请码</td>
+                    </tr>
+                    <tr>
+                        <td>file</td>
+                        <td>file</td>
+                        <td>表单</td>
+                        <td>视频文件</td>
+                    </tr>
+                </table>
+
+                <div class="endpoint">
+                    <div class="method post">POST</div>
+                    <code>/api/process/video/{invite_code}</code>
+                </div>
+                <p class="description">处理单个视频文件，生成带字幕的视频</p>
+
+                <h4>响应示例</h4>
+                <pre class="code-block"><code>{
+  "task_id": "task_abc123",
+  "duration": 5.2,
+  "message": "任务已创建"
+}</code></pre>
+            </section>
+
+            <!-- 批量处理 -->
+            <section id="batch-process" class="api-section">
+                <h2>批量处理</h2>
+
+                <div class="endpoint">
+                    <div class="method post">POST</div>
+                    <code>/api/batch/process/{invite_code}</code>
+                </div>
+                <p class="description">批量处理多个视频文件</p>
+
+                <h4>参数</h4>
+                <table class="params-table">
+                    <tr>
+                        <th>参数</th>
+                        <th>类型</th>
+                        <th>位置</th>
+                        <th>描述</th>
+                    </tr>
+                    <tr>
+                        <td>invite_code</td>
+                        <td>string</td>
+                        <td>路径</td>
+                        <td>有效的邀请码</td>
+                    </tr>
+                    <tr>
+                        <td>files</td>
+                        <td>file[]</td>
+                        <td>表单</td>
+                        <td>多个视频文件</td>
+                    </tr>
+                    <tr>
+                        <td>mode</td>
+                        <td>string</td>
+                        <td>表单</td>
+                        <td>处理模式: "srt" 或 "video"</td>
+                    </tr>
+                </table>
+
+                <h4>响应示例</h4>
+                <pre class="code-block"><code>{
+  "batch_id": "batch_xyz789",
+  "file_count": 3,
+  "message": "批量任务已创建"
+}</code></pre>
+            </section>
+
+            <!-- 任务查询 -->
+            <section id="task-query" class="api-section">
+                <h2>任务查询</h2>
+
+                <div class="endpoint">
+                    <div class="method get">GET</div>
+                    <code>/api/task/{task_id}</code>
+                </div>
+                <p class="description">查询单个任务状态</p>
+
+                <h4>响应示例</h4>
+                <pre class="code-block"><code>{
+  "task_id": "task_abc123",
+  "status": "completed",
+  "progress": "处理完成",
+  "filename": "output_video.mp4",
+  "mode": "video"
+}</code></pre>
+
+                <div class="endpoint">
+                    <div class="method get">GET</div>
+                    <code>/api/batch/{batch_id}</code>
+                </div>
+                <p class="description">查询批量任务状态</p>
+
+                <h4>响应示例</h4>
+                <pre class="code-block"><code>{
+  "batch_id": "batch_xyz789",
+  "status": "processing",
+  "task_ids": ["task_1", "task_2", "task_3"],
+  "tasks": {
+    "task_1": {"status": "completed"},
+    "task_2": {"status": "processing"},
+    "task_3": {"status": "pending"}
+  }
+}</code></pre>
+            </section>
+
+            <!-- 文件下载 -->
+            <section id="download" class="api-section">
+                <h2>文件下载</h2>
+
+                <div class="endpoint">
+                    <div class="method get">GET</div>
+                    <code>/api/download/srt/{filename}</code>
+                </div>
+                <p class="description">下载SRT字幕文件</p>
+
+                <div class="endpoint">
+                    <div class="method get">GET</div>
+                    <code>/api/download/video/{filename}</code>
+                </div>
+                <p class="description">下载带字幕的视频文件</p>
+
+                <div class="endpoint">
+                    <div class="method get">GET</div>
+                    <code>/api/batch/download/{batch_id}</code>
+                </div>
+                <p class="description">下载批量任务的压缩包</p>
+            </section>
+
+            <!-- 配置管理 -->
+            <section id="config" class="api-section">
+                <h2>配置管理</h2>
+
+                <div class="endpoint">
+                    <div class="method get">GET</div>
+                    <code>/api/tranpy/config-ollama-api/{api_url}</code>
+                </div>
+                <p class="description">配置Ollama API地址</p>
+
+                <div class="endpoint">
+                    <div class="method get">GET</div>
+                    <code>/api/tranpy/config-ollama-model/{model_name}</code>
+                </div>
+                <p class="description">配置Ollama模型名称</p>
+
+                <div class="endpoint">
+                    <div class="method get">GET</div>
+                    <code>/api/tranpy/config</code>
+                </div>
+                <p class="description">获取当前配置信息</p>
+
+                <h4>响应示例</h4>
+                <pre class="code-block"><code>{
+  "ollama_api": "http://localhost:11434",
+  "ollama_model": "llama2"
+}</code></pre>
+            </section>
+
+            <!-- 管理功能 -->
+            <section id="admin" class="api-section">
+                <h2>管理功能</h2>
+
+                <div class="endpoint">
+                    <div class="method post">POST</div>
+                    <code>/api/administrator/delete_all_cache</code>
+                </div>
+                <p class="description">清除所有缓存文件（管理员功能）</p>
+
+                <h4>响应示例</h4>
+                <pre class="code-block"><code>{
+  "message": "所有缓存已清除",
+  "deleted_files": 15
+}</code></pre>
+            </section>
+        </div>
+    </div>
+
+    <script src="js/api-docs.js"></script>
+</body>
+</html>

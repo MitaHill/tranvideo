@@ -1,0 +1,259 @@
+2025-07-09 13:43:39,988 - INFO - 启动Whisper服务
+2025-07-09 13:43:39,988 - INFO - 加载模型到 cuda
+2025-07-09 13:43:49,283 - INFO - 模型加载完成，显存使用: 5.88GB
+2025-07-09 13:43:49,283 - INFO - 模型预加载完成
+2025-07-09 13:43:49,286 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+2025-07-09 13:43:49,286 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-09 13:43:49,936 - INFO - 127.0.0.1 - - [09/Jul/2025 13:43:49] "GET /health HTTP/1.1" 200 -
+2025-07-09 13:44:38,612 - INFO - 启动Whisper服务
+2025-07-09 13:44:38,612 - INFO - 加载模型到 cuda
+2025-07-09 13:44:47,385 - INFO - 模型加载完成，显存使用: 5.88GB
+2025-07-09 13:44:47,386 - INFO - 模型预加载完成
+2025-07-09 13:44:47,388 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+2025-07-09 13:44:47,388 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-09 13:44:47,562 - INFO - 127.0.0.1 - - [09/Jul/2025 13:44:47] "GET /health HTTP/1.1" 200 -
+2025-07-09 13:46:39,279 - INFO - 启动Whisper服务
+2025-07-09 13:46:39,279 - INFO - 加载模型到 cuda
+2025-07-09 13:46:48,118 - INFO - 模型加载完成，显存使用: 5.88GB
+2025-07-09 13:46:48,118 - INFO - 模型预加载完成
+2025-07-09 13:46:48,122 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+2025-07-09 13:46:48,122 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-09 13:46:48,269 - INFO - 127.0.0.1 - - [09/Jul/2025 13:46:48] "GET /health HTTP/1.1" 200 -
+2025-07-09 13:47:22,247 - INFO - 127.0.0.1 - - [09/Jul/2025 13:47:22] "GET /health HTTP/1.1" 200 -
+2025-07-09 13:47:26,985 - INFO - 127.0.0.1 - - [09/Jul/2025 13:47:26] "POST /transcribe_video HTTP/1.1" 200 -
+2025-07-09 13:58:11,672 - INFO - 启动Whisper服务
+2025-07-09 13:58:11,672 - INFO - 加载模型到 cuda
+2025-07-09 13:58:20,381 - INFO - 模型加载完成，显存使用: 5.88GB
+2025-07-09 13:58:20,381 - INFO - 模型预加载完成
+2025-07-09 13:58:20,384 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+2025-07-09 13:58:20,384 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-09 13:58:20,690 - INFO - 127.0.0.1 - - [09/Jul/2025 13:58:20] "GET /health HTTP/1.1" 200 -
+2025-07-09 13:59:11,672 - INFO - 127.0.0.1 - - [09/Jul/2025 13:59:11] "GET /health HTTP/1.1" 200 -
+2025-07-09 13:59:16,439 - INFO - 127.0.0.1 - - [09/Jul/2025 13:59:16] "POST /transcribe_video HTTP/1.1" 200 -
+2025-07-09 14:04:21,204 - INFO - 启动Whisper服务
+2025-07-09 14:04:21,204 - INFO - 加载模型到 cuda
+2025-07-09 14:04:29,582 - INFO - 模型加载完成，显存使用: 5.88GB
+2025-07-09 14:04:29,582 - INFO - 模型预加载完成
+2025-07-09 14:04:29,585 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+2025-07-09 14:04:29,585 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-09 14:04:30,176 - INFO - 127.0.0.1 - - [09/Jul/2025 14:04:30] "GET /health HTTP/1.1" 200 -
+2025-07-09 14:04:44,159 - INFO - 127.0.0.1 - - [09/Jul/2025 14:04:44] "GET /health HTTP/1.1" 200 -
+2025-07-09 14:04:48,230 - INFO - 127.0.0.1 - - [09/Jul/2025 14:04:48] "POST /transcribe_video HTTP/1.1" 200 -
+2025-07-09 14:11:15,154 - INFO - 启动Whisper服务
+2025-07-09 14:11:15,154 - INFO - 加载模型到 cuda
+2025-07-09 14:11:23,530 - INFO - 模型加载完成，显存使用: 5.88GB
+2025-07-09 14:11:23,530 - INFO - 模型预加载完成
+2025-07-09 14:11:23,533 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+2025-07-09 14:11:23,533 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-09 14:11:24,161 - INFO - 127.0.0.1 - - [09/Jul/2025 14:11:24] "GET /health HTTP/1.1" 200 -
+2025-07-09 14:11:34,139 - INFO - 127.0.0.1 - - [09/Jul/2025 14:11:34] "GET /health HTTP/1.1" 200 -
+2025-07-09 14:11:39,936 - INFO - 127.0.0.1 - - [09/Jul/2025 14:11:39] "POST /transcribe_video HTTP/1.1" 200 -
+2025-07-10 02:09:08,828 - INFO - 启动Whisper服务
+2025-07-10 02:09:08,830 - INFO - 加载模型到 cuda
+2025-07-10 02:09:20,418 - INFO - 模型加载完成，显存使用: 5.88GB
+2025-07-10 02:09:20,418 - INFO - 模型预加载完成
+2025-07-10 02:09:20,421 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+2025-07-10 02:09:20,421 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-10 02:09:20,694 - INFO - 127.0.0.1 - - [10/Jul/2025 02:09:20] "GET /health HTTP/1.1" 200 -
+2025-07-10 02:52:25,096 - INFO - 启动Whisper服务
+2025-07-10 02:52:25,096 - INFO - 加载模型到 cuda
+2025-07-10 02:52:36,015 - INFO - 模型加载完成，显存使用: 5.88GB
+2025-07-10 02:52:36,015 - INFO - 模型预加载完成
+2025-07-10 02:52:36,018 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+2025-07-10 02:52:36,018 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-10 02:52:36,068 - INFO - 127.0.0.1 - - [10/Jul/2025 02:52:36] "GET /health HTTP/1.1" 200 -
+2025-07-10 03:17:25,390 - INFO - 启动Whisper服务
+2025-07-10 03:17:25,390 - INFO - 加载模型到 cuda
+2025-07-10 03:17:36,419 - INFO - 模型加载完成，显存使用: 5.88GB
+2025-07-10 03:17:36,419 - INFO - 模型预加载完成
+2025-07-10 03:17:36,422 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+2025-07-10 03:17:36,422 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-10 03:17:37,351 - INFO - 127.0.0.1 - - [10/Jul/2025 03:17:37] "GET /health HTTP/1.1" 200 -
+2025-07-10 03:22:20,926 - INFO - 启动Whisper服务
+2025-07-10 03:22:20,926 - INFO - 加载模型到 cuda
+2025-07-10 03:22:31,829 - INFO - 模型加载完成，显存使用: 5.88GB
+2025-07-10 03:22:31,829 - INFO - 模型预加载完成
+2025-07-10 03:22:31,832 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+2025-07-10 03:22:31,832 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-10 03:22:31,841 - INFO - 127.0.0.1 - - [10/Jul/2025 03:22:31] "GET /health HTTP/1.1" 200 -
+2025-07-10 05:37:32,342 - INFO - 启动Whisper服务
+2025-07-10 05:37:32,344 - INFO - 加载模型到 cuda
+2025-07-10 05:37:46,340 - INFO - 模型加载完成，显存使用: 5.88GB
+2025-07-10 05:37:46,340 - INFO - 模型预加载完成
+2025-07-10 05:37:46,345 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+2025-07-10 05:37:46,345 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-10 05:37:46,597 - INFO - 127.0.0.1 - - [10/Jul/2025 05:37:46] "GET /health HTTP/1.1" 200 -
+2025-07-10 05:39:20,182 - INFO - 启动Whisper服务
+2025-07-10 05:39:20,182 - INFO - 加载模型到 cuda
+2025-07-10 05:39:28,273 - INFO - 模型加载完成，显存使用: 5.88GB
+2025-07-10 05:39:28,273 - INFO - 模型预加载完成
+2025-07-10 05:39:28,276 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+2025-07-10 05:39:28,276 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-10 05:39:29,128 - INFO - 127.0.0.1 - - [10/Jul/2025 05:39:29] "GET /health HTTP/1.1" 200 -
+2025-07-10 05:56:16,243 - INFO - 启动Whisper服务
+2025-07-10 05:56:16,243 - INFO - 加载模型到 cuda
+2025-07-10 05:56:24,294 - INFO - 模型加载完成，显存使用: 5.88GB
+2025-07-10 05:56:24,294 - INFO - 模型预加载完成
+2025-07-10 05:56:24,297 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+2025-07-10 05:56:24,297 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-10 05:56:25,240 - INFO - 127.0.0.1 - - [10/Jul/2025 05:56:25] "GET /health HTTP/1.1" 200 -
+2025-07-10 06:04:46,425 - INFO - 启动Whisper服务
+2025-07-10 06:04:46,425 - INFO - 加载模型到 cuda
+2025-07-10 06:04:54,377 - INFO - 模型加载完成，显存使用: 5.88GB
+2025-07-10 06:04:54,377 - INFO - 模型预加载完成
+2025-07-10 06:04:54,380 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+2025-07-10 06:04:54,380 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-10 06:04:54,412 - INFO - 127.0.0.1 - - [10/Jul/2025 06:04:54] "GET /health HTTP/1.1" 200 -
+2025-07-10 06:07:19,185 - INFO - 启动Whisper服务
+2025-07-10 06:07:19,185 - INFO - 加载模型到 cuda
+2025-07-10 06:07:27,213 - INFO - 模型加载完成，显存使用: 5.88GB
+2025-07-10 06:07:27,213 - INFO - 模型预加载完成
+2025-07-10 06:07:27,216 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+2025-07-10 06:07:27,216 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-10 06:07:28,195 - INFO - 127.0.0.1 - - [10/Jul/2025 06:07:28] "GET /health HTTP/1.1" 200 -
+2025-07-10 06:07:39,171 - INFO - 127.0.0.1 - - [10/Jul/2025 06:07:39] "GET /health HTTP/1.1" 200 -
+2025-07-10 06:07:40,804 - INFO - 127.0.0.1 - - [10/Jul/2025 06:07:40] "POST /transcribe_video HTTP/1.1" 200 -
+2025-07-10 06:18:05,095 - INFO - 启动Whisper服务
+2025-07-10 06:18:05,095 - INFO - 加载模型到 cuda
+2025-07-10 06:18:13,087 - INFO - 模型加载完成，显存使用: 5.88GB
+2025-07-10 06:18:13,087 - INFO - 模型预加载完成
+2025-07-10 06:18:13,090 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+2025-07-10 06:18:13,090 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-10 06:18:13,096 - INFO - 127.0.0.1 - - [10/Jul/2025 06:18:13] "GET /health HTTP/1.1" 200 -
+2025-07-10 06:19:20,020 - INFO - 启动Whisper服务
+2025-07-10 06:19:20,020 - INFO - 加载模型到 cuda
+2025-07-10 06:19:28,013 - INFO - 模型加载完成，显存使用: 5.88GB
+2025-07-10 06:19:28,013 - INFO - 模型预加载完成
+2025-07-10 06:19:28,016 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+2025-07-10 06:19:28,016 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-10 06:19:29,004 - INFO - 127.0.0.1 - - [10/Jul/2025 06:19:29] "GET /health HTTP/1.1" 200 -
+2025-07-10 06:29:23,920 - INFO - 启动Whisper服务
+2025-07-10 06:29:23,920 - INFO - 加载模型到 cuda
+2025-07-10 06:29:31,889 - INFO - 模型加载完成，显存使用: 5.88GB
+2025-07-10 06:29:31,889 - INFO - 模型预加载完成
+2025-07-10 06:29:31,892 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+2025-07-10 06:29:31,892 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-10 06:29:32,862 - INFO - 127.0.0.1 - - [10/Jul/2025 06:29:32] "GET /health HTTP/1.1" 200 -
+2025-07-10 07:11:53,548 - INFO - 启动Whisper服务
+2025-07-10 07:11:53,548 - INFO - 加载模型到 cuda
+2025-07-10 07:13:57,485 - INFO - 模型加载完成，显存使用: 5.88GB
+2025-07-10 07:13:57,485 - INFO - 模型预加载完成
+2025-07-10 07:13:57,487 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+2025-07-10 07:13:57,487 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-10 07:14:18,545 - INFO - 127.0.0.1 - - [10/Jul/2025 07:14:18] "GET /health HTTP/1.1" 200 -
+2025-07-10 07:14:22,383 - INFO - 127.0.0.1 - - [10/Jul/2025 07:14:22] "POST /transcribe_video HTTP/1.1" 200 -
+2025-07-10 07:20:13,475 - INFO - 启动Whisper服务
+2025-07-10 07:20:13,476 - INFO - 加载模型到 cuda
+2025-07-10 07:22:28,606 - INFO - 模型加载完成，显存使用: 5.88GB
+2025-07-10 07:22:28,606 - INFO - 模型预加载完成
+2025-07-10 07:22:28,609 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+2025-07-10 07:22:28,609 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-10 07:25:47,279 - INFO - 启动Whisper服务
+2025-07-10 07:25:47,279 - INFO - 加载模型到 cuda
+2025-07-10 07:25:57,415 - INFO - 模型加载完成，显存使用: 5.88GB
+2025-07-10 07:25:57,415 - INFO - 模型预加载完成
+2025-07-10 07:25:57,418 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+2025-07-10 07:25:57,418 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-10 07:34:05,893 - INFO - 启动Whisper服务
+2025-07-10 07:34:05,893 - INFO - 加载模型到 cuda
+2025-07-10 07:34:15,992 - INFO - 模型加载完成，显存使用: 5.88GB
+2025-07-10 07:34:15,993 - INFO - 模型预加载完成
+2025-07-10 07:34:15,995 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+2025-07-10 07:34:15,996 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-10 07:34:45,746 - INFO - 启动Whisper服务
+2025-07-10 07:34:45,746 - INFO - 加载模型到 cuda
+2025-07-10 07:34:55,871 - INFO - 模型加载完成，显存使用: 5.88GB
+2025-07-10 07:34:55,871 - INFO - 模型预加载完成
+2025-07-10 07:34:55,877 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+2025-07-10 07:34:55,877 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-10 07:35:54,371 - INFO - 启动Whisper服务
+2025-07-10 07:35:54,371 - INFO - 加载模型到 cuda
+2025-07-10 07:36:04,459 - INFO - 模型加载完成，显存使用: 5.88GB
+2025-07-10 07:36:04,460 - INFO - 模型预加载完成
+2025-07-10 07:36:04,464 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+2025-07-10 07:36:04,464 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-10 07:36:05,342 - INFO - 127.0.0.1 - - [10/Jul/2025 07:36:05] "GET /health HTTP/1.1" 200 -
+2025-07-10 07:45:07,921 - INFO - 启动Whisper服务
+2025-07-10 07:45:07,921 - INFO - 加载模型到 cuda
+2025-07-10 07:45:18,044 - INFO - 模型加载完成，显存使用: 5.88GB
+2025-07-10 07:45:18,044 - INFO - 模型预加载完成
+2025-07-10 07:45:18,047 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+2025-07-10 07:45:18,047 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-10 07:45:18,915 - INFO - 127.0.0.1 - - [10/Jul/2025 07:45:18] "GET /health HTTP/1.1" 200 -
+2025-07-10 07:51:42,552 - INFO - 启动Whisper服务
+2025-07-10 07:51:42,552 - INFO - 加载模型到 cuda
+2025-07-10 07:51:52,803 - INFO - 模型加载完成，显存使用: 5.88GB
+2025-07-10 07:51:52,803 - INFO - 模型预加载完成
+2025-07-10 07:51:52,807 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+2025-07-10 07:51:52,807 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-10 07:51:53,545 - INFO - 127.0.0.1 - - [10/Jul/2025 07:51:53] "GET /health HTTP/1.1" 200 -
+2025-07-10 07:58:16,540 - INFO - 启动Whisper服务
+2025-07-10 07:58:16,540 - INFO - 加载模型到 cuda
+2025-07-10 07:58:26,666 - INFO - 模型加载完成，显存使用: 5.88GB
+2025-07-10 07:58:26,666 - INFO - 模型预加载完成
+2025-07-10 07:58:26,669 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+2025-07-10 07:58:26,669 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-10 07:58:27,513 - INFO - 127.0.0.1 - - [10/Jul/2025 07:58:27] "GET /health HTTP/1.1" 200 -
+2025-07-10 07:58:27,538 - INFO - 127.0.0.1 - - [10/Jul/2025 07:58:27] "GET /health HTTP/1.1" 200 -
+2025-07-10 07:58:55,547 - INFO - 127.0.0.1 - - [10/Jul/2025 07:58:55] "GET /health HTTP/1.1" 200 -
+2025-07-10 07:59:02,451 - INFO - 127.0.0.1 - - [10/Jul/2025 07:59:02] "POST /transcribe_video HTTP/1.1" 200 -
+2025-07-10 08:04:58,188 - INFO - 启动Whisper服务
+2025-07-10 08:04:58,188 - INFO - 加载模型到 cuda
+2025-07-10 08:05:08,239 - INFO - 模型加载完成，显存使用: 5.88GB
+2025-07-10 08:05:08,239 - INFO - 模型预加载完成
+2025-07-10 08:05:08,242 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+2025-07-10 08:05:08,242 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-10 08:05:09,168 - INFO - 127.0.0.1 - - [10/Jul/2025 08:05:09] "GET /health HTTP/1.1" 200 -
+2025-07-10 08:05:09,187 - INFO - 127.0.0.1 - - [10/Jul/2025 08:05:09] "GET /health HTTP/1.1" 200 -
+2025-07-10 08:05:52,193 - INFO - 127.0.0.1 - - [10/Jul/2025 08:05:52] "GET /health HTTP/1.1" 200 -
+2025-07-10 08:05:58,741 - INFO - 127.0.0.1 - - [10/Jul/2025 08:05:58] "POST /transcribe_video HTTP/1.1" 200 -
+2025-07-10 08:10:02,175 - INFO - 127.0.0.1 - - [10/Jul/2025 08:10:02] "GET /health HTTP/1.1" 200 -
+2025-07-10 08:10:08,163 - INFO - 127.0.0.1 - - [10/Jul/2025 08:10:08] "POST /transcribe_video HTTP/1.1" 200 -
+2025-07-10 08:20:09,071 - INFO - 启动Whisper服务
+2025-07-10 08:20:09,071 - INFO - 加载模型到 cuda
+2025-07-10 08:20:19,267 - INFO - 模型加载完成，显存使用: 5.88GB
+2025-07-10 08:20:19,268 - INFO - 模型预加载完成
+2025-07-10 08:20:19,271 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+2025-07-10 08:20:19,271 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-10 08:20:19,985 - INFO - 127.0.0.1 - - [10/Jul/2025 08:20:19] "GET /health HTTP/1.1" 200 -
+2025-07-10 08:20:20,002 - INFO - 127.0.0.1 - - [10/Jul/2025 08:20:20] "GET /health HTTP/1.1" 200 -
+2025-07-10 08:25:39,811 - INFO - 启动Whisper服务
+2025-07-10 08:25:39,811 - INFO - 加载模型到 cuda
+2025-07-10 08:25:49,879 - INFO - 模型加载完成，显存使用: 5.88GB
+2025-07-10 08:25:49,879 - INFO - 模型预加载完成
+2025-07-10 08:25:49,882 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+2025-07-10 08:25:49,882 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-10 08:25:50,789 - INFO - 127.0.0.1 - - [10/Jul/2025 08:25:50] "GET /health HTTP/1.1" 200 -
+2025-07-10 08:25:50,811 - INFO - 127.0.0.1 - - [10/Jul/2025 08:25:50] "GET /health HTTP/1.1" 200 -
+2025-07-10 08:28:32,836 - INFO - 127.0.0.1 - - [10/Jul/2025 08:28:32] "GET /health HTTP/1.1" 200 -
+2025-07-10 08:28:36,286 - INFO - 127.0.0.1 - - [10/Jul/2025 08:28:36] "POST /transcribe_video HTTP/1.1" 200 -

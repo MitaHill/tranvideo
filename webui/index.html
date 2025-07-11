@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>视频字幕处理系统</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 邀请码验证 -->
+        <div class="section">
+            <div class="section-title">邀请码验证</div>
+            <div class="form-row">
+                <input type="text" id="inviteCode" class="input" placeholder="输入邀请码" maxlength="10">
+                <button class="btn btn-primary" onclick="verifyInviteCode()">验证</button>
+            </div>
+            <div id="inviteStatus"></div>
+        </div>
+
+        <!-- 主功能区 -->
+        <div id="mainContent" class="hidden">
+            <div class="tabs">
+                <button class="tab active" onclick="switchTab('single')">单文件处理</button>
+                <button class="tab" onclick="switchTab('batch')">批量处理</button>
+            </div>
+
+            <!-- 单文件处理 -->
+            <div id="single-tab" class="tab-content active">
+                <div class="form-group">
+                    <div class="radio-group">
+                        <label class="radio-item">
+                            <input type="radio" name="mode" value="srt" checked>
+                            <span>生成字幕文件</span>
+                        </label>
+                        <label class="radio-item">
+                            <input type="radio" name="mode" value="video">
+                            <span>生成带字幕视频</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="upload-area" onclick="document.getElementById('videoFile').click()">
+                    <input type="file" id="videoFile" accept="video/*" style="display:none" onchange="handleSingleFile(this)">
+                    <p>点击选择视频文件</p>
+                    <div id="fileName"></div>
+                </div>
+
+                <button class="btn btn-success" onclick="processVideo()" id="processBtn" disabled>开始处理</button>
+            </div>
+
+            <!-- 批量处理 -->
+            <div id="batch-tab" class="tab-content">
+                <div class="form-group">
+                    <div class="radio-group">
+                        <label class="radio-item">
+                            <input type="radio" name="batch_mode" value="srt" checked>
+                            <span>批量生成字幕</span>
+                        </label>
+                        <label class="radio-item">
+                            <input type="radio" name="batch_mode" value="video">
+                            <span>批量生成视频</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="upload-area" onclick="document.getElementById('batchFiles').click()">
+                    <input type="file" id="batchFiles" accept="video/*" multiple style="display:none" onchange="handleBatchFiles(this)">
+                    <p>点击选择多个视频文件</p>
+                </div>
+                <div class="file-list" id="batchList"></div>
+
+                <button class="btn btn-success" onclick="processBatch()" id="batchProcessBtn" disabled>批量处理</button>
+            </div>
+        </div>
+
+        <!-- 状态查询 -->
+        <div class="section" id="querySection" style="display:none">
+            <div class="section-title">状态查询</div>
+            <div class="form-row">
+                <button class="btn btn-primary" onclick="checkStatus()">系统状态</button>
+                <input type="text" id="taskIdInput" class="input" placeholder="输入任务ID查询" style="flex:1">
+                <button class="btn btn-primary" onclick="queryTask()">查询</button>
+            </div>
+        </div>
+
+        <!-- 帮助文档 -->
+        <div class="section" id="helpSection" style="display:none">
+            <div class="section-title">帮助文档</div>
+            <div class="help-links">
+                <a href="api-docs.html" class="btn btn-secondary" target="_blank">API 文档</a>
+                <a href="faq.html" class="btn btn-secondary" target="_blank">常见问题</a>
+            </div>
+        </div>
+
+        <!-- 进度和结果 -->
+        <div class="section">
+            <div class="progress" id="progress">
+                <div class="spinner"></div>
+                <div id="status">处理中...</div>
+            </div>
+            <div id="result"></div>
+        </div>
+    </div>
+
+    <script src="js/index.js"></script>
+</body>
+</html>
