@@ -6,6 +6,21 @@
 
 一个基于 Whisper Large V3 和 Ollama 的智能视频字幕提取与翻译平台，支持批量处理和多种输出方式。
 
+[API文档](https://tranvideo.clash.ink/api-docs.html)
+[米塔山的网站](https://clash.ink)
+[米塔山的博客](https://b.clash.ink)
+[米塔山的论坛](https://cnm.clash.ink)
+
+公开API地址
+```https://tranvideo.clash.ink/api```
+
+### 获取公开API的邀请号码
+
+给 ```kindmitaishere@gmail.com```或```rttommmr@outlook.com```发送电子邮件，或者提出“问题”
+
+ **请注意，获取公开API的邀请号码不是必须的。因为你可以自行部署，可以通过源码运行，也可以通过```docker```的方式运行（***推荐***）***
+
+
 ## ✨ 主要功能
 
 - 🎵 **提取**: 从视频文件中自动提取高质量音频
