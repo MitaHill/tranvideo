@@ -1,10 +1,19 @@
-# Tranvideo - AI 视频字幕翻译平台
+# Tranvideo - 自部署的翻译视频项目
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Docker](https://img.shields.io/badge/docker-ready-brightgreen.svg)
 ![GPU](https://img.shields.io/badge/GPU-CUDA-orange.svg)
 
-一个基于 Whisper Large V3 和 Ollama 的智能视频字幕提取与翻译平台，支持批量处理和多种输出方式。
+一个基于 Whisper Large V3 和 Ollama 的视频翻译项目。
+
+将视频使用`Whisper Large V3`进行提取字幕，
+
+并使用Ollama模型进行翻译，最后输出字幕到视频中。
+
+支持批量处理和多种输出方式。
+
+---------------
+
 
 [API文档](https://tranvideo.clash.ink/api-docs.html)
 [米塔山的网站](https://clash.ink)
@@ -14,6 +23,9 @@
 公开API地址
 ```https://tranvideo.clash.ink/api```
 
+公开的网站
+```https://tranvideo.clash.ink```
+
 ### 获取公开API的邀请号码
 
 给 ```kindmitaishere@gmail.com```或```rttommmr@outlook.com```发送电子邮件，或者提出“问题”
@@ -21,20 +33,40 @@
  **请注意，获取公开API的邀请号码不是必须的。因为你可以自行部署，可以通过源码运行，也可以通过```docker```的方式运行（***推荐***）***
 
 
+ ***公开邀请码为`kindmita`，在公开的API地址中***
+
+
 
  [前往哔哩哔哩获取通过Docker方式部署的方法](https://www.bilibili.com/video/BV1H7gSznE46)
+
+
+---------------
 
 
  
 ## ✨ 主要功能
 
-- 🎵 **提取**: 从视频文件中自动提取高质量音频
-- 🎯 **识别**: 使用 Whisper Large V3 模型进行精准语音转文字
-- 🌍 **翻译**: 集成 Ollama进行自然流畅的中文翻译
-- 📝 **字幕**: 自动生成 SRT 格式字幕文件
-- 🎬 **视频合成**: 将翻译后的字幕烧录到原视频中
-- 📦 **批量处理**: 支持多文件同时处理和批量下载
-- ⚡ **GPU 加速**: 充分利用 CUDA 进行高效处理
+- 🎵 **提取**       从视频文件中自动提取高音频
+- 🎯 **识别**       使用`Whisper Large V3`模型对音频进行文字提取
+- 🌍 **翻译**       调用`Ollama`的API，对提取到的原文进行逐句翻译
+- 📝 **字幕**       生成 SRT 格式字幕文件
+- 🎬 **视频合成**   在***提取***、***翻译***工作完成后根据分配的任务，可以直接下载SRT字幕，也可以选择下载字幕合并过的视频文件
+- 📦 **批量处理**   支持多个视频一次性处理和批量下载
+- ⚡ **GPU 加速**   充分利用 CUDA 进行高效处理。
+
+
+## 👀实例
+ - ### 条件
+ - V100计算卡16GB显存规格
+ - Ollama模型为 `qwen:8b` ***开启推理***版本
+ - Whisper 服务和 `qwen:8b` 运行在同一张计算卡上，共享着16GB显存
+   
+ 经过测试
+ 
+ 在***显存大小16G***的***V100***计算卡上，30分钟的视频只需要大约10分钟就可以处理完毕。
+
+ ⚠️ 具体的翻译速度根据需要翻译的视频中有多少说话的内容决定，速度瓶颈在Ollama模型翻译上。
+ 
 
 ## 🎨 Web 界面预览
 
@@ -120,7 +152,7 @@ http://地址:端口/api/tranpy/config-ollama-api/你的ollama地址:端口
 
 **示例**:
 ```
-http://地址:端口/api/tranpy/config-ollama-api/192.168.1.100:11435
+http://192.168.1.50:5000/api/tranpy/config-ollama-api/192.168.1.100:11434
 ```
 
 ### 2. 配置翻译模型
@@ -280,3 +312,7 @@ curl http://地址:端口/api/tranpy/config
 ---
 
 ⭐ 如果这个项目对你有帮助，请给一个 Star！
+
+---
+
+`tranvideo 2.0` 将考虑进行发布。
