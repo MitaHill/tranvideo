@@ -4,9 +4,18 @@
 ![Docker](https://img.shields.io/badge/docker-ready-brightgreen.svg)
 ![GPU](https://img.shields.io/badge/GPU-CUDA-orange.svg)
 ![Python](https://img.shields.io/badge/python-3.8+-blue.svg)
-![GitHub stars](https://img.shields.io/github/stars/MitaHill/tranvideo)
-![GitHub forks](https://img.shields.io/github/forks/MitaHill/tranvideo)
+![Flask](https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white)
+![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white)
+
+![GitHub Repo stars](https://img.shields.io/github/stars/MitaHill/tranvideo?style=social)
+![GitHub forks](https://img.shields.io/github/forks/MitaHill/tranvideo?style=social)
+![GitHub watchers](https://img.shields.io/github/watchers/MitaHill/tranvideo?style=social)
 ![GitHub issues](https://img.shields.io/github/issues/MitaHill/tranvideo)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/MitaHill/tranvideo)
+![GitHub last commit](https://img.shields.io/github/last-commit/MitaHill/tranvideo)
+![GitHub repo size](https://img.shields.io/github/repo-size/MitaHill/tranvideo)
+![GitHub language count](https://img.shields.io/github/languages/count/MitaHill/tranvideo)
+![GitHub top language](https://img.shields.io/github/languages/top/MitaHill/tranvideo)
 
 一个基于 Whisper Large V3 和 Ollama 的视频翻译项目。
 
@@ -71,6 +80,16 @@
 
  ⚠️ 具体的翻译速度根据需要翻译的视频中有多少说话的内容决定，速度瓶颈在Ollama模型翻译上。
  
+
+![展示1](https://p.clash.ink/i/2025/07/29/qs3z8r.jpg)
+![展示2](https://p.clash.ink/i/2025/07/29/qs44ay.jpg)
+![展示3](https://p.clash.ink/i/2025/07/29/qs4fa5.jpg)
+![展示4](https://p.clash.ink/i/2025/07/29/qtvs04.jpg)
+
+如图的显存占用情况
+
+![展示5](https://p.clash.ink/i/2025/07/29/qug63i.jpg)
+
 
 ## 🎨 Web 界面预览
 
@@ -300,6 +319,11 @@ curl http://地址:端口/api/tranpy/config
 
 本项目采用 MIT 许可证 - 查看 [LICENSE](LICENSE) 文件了解详情。
 
+![Development Status](https://img.shields.io/badge/Development-Active-brightgreen)
+![Maintenance](https://img.shields.io/badge/Maintained-Yes-green)
+![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
+![Good First Issues](https://img.shields.io/badge/good%20first%20issues-open-blue)
+![Help Wanted](https://img.shields.io/badge/help%20wanted-yes-yellow)
 
 ## 📞 联系方式
 
@@ -313,10 +337,10 @@ curl http://地址:端口/api/tranpy/config
 - [Ollama](https://ollama.ai/) - 便捷的大模型部署工具
 - [Qwen](https://github.com/QwenLM/Qwen) - 优秀的中文大语言模型
 
----
+
 
 ⭐ 如果这个项目对你有帮助，请给一个 Star！
 
----
+
 
 `tranvideo 2.0` 将考虑进行发布。
