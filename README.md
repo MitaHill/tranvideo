@@ -21,6 +21,11 @@
  **请注意，获取公开API的邀请号码不是必须的。因为你可以自行部署，可以通过源码运行，也可以通过```docker```的方式运行（***推荐***）***
 
 
+
+ [前往哔哩哔哩获取通过Docker方式部署的方法](https://www.bilibili.com/video/BV1H7gSznE46)
+
+
+ 
 ## ✨ 主要功能
 
 - 🎵 **提取**: 从视频文件中自动提取高质量音频
@@ -110,25 +115,25 @@ docker run -d \
 
 访问以下 URL 配置 API 地址：
 ```
-http://localhost:5000/api/tranpy/config-ollama-api/你的ollama地址:端口
+http://地址:端口/api/tranpy/config-ollama-api/你的ollama地址:端口
 ```
 
 **示例**:
 ```
-http://localhost:5000/api/tranpy/config-ollama-api/192.168.1.100:11435
+http://地址:端口/api/tranpy/config-ollama-api/192.168.1.100:11435
 ```
 
 ### 2. 配置翻译模型
 
 ```
-http://localhost:5000/api/tranpy/config-ollama-model/qwen3:8b
+http://地址:端口/api/tranpy/config-ollama-model/qwen3:8b
 ```
 
 ### 3. 验证配置
 
 访问配置查看接口：
 ```
-http://localhost:5000/api/tranpy/config
+http://地址:端口/api/tranpy/config
 ```
 
 ## 📖 使用指南
@@ -137,7 +142,7 @@ http://localhost:5000/api/tranpy/config
 
 1. **打开 Web 界面**
    ```
-   http://localhost:5000
+   http://地址:端口
    ```
 
 2. **输入邀请码**
@@ -171,22 +176,12 @@ http://localhost:5000/api/tranpy/config
 4. 所有文件将按顺序处理
 5. 完成后提供批量下载
 
+
 ### API 接口
 
-#### 健康检查
-```bash
-curl http://localhost:5000/api/whisper/health
-```
+[获取API调用接口的文档](https://tranvideo.clash.ink/api-docs.html)
 
-#### 邀请码验证
-```bash
-curl http://localhost:5000/api/invitation/check/kindmita
-```
 
-#### 任务状态查询
-```bash
-curl http://localhost:5000/api/task/{task_id}
-```
 
 ## 🛠️ 系统要求
 
@@ -234,7 +229,7 @@ docker run --rm --gpus all nvidia/cuda:11.0-base nvidia-smi
 **Q: Whisper 服务未启动**
 ```bash
 # 检查服务状态
-curl http://localhost:5000/api/whisper/health
+curl http://地址:端口/api/whisper/health
 
 # 查看容器日志
 docker-compose logs tranvideo
@@ -243,10 +238,10 @@ docker-compose logs tranvideo
 **Q: 翻译功能异常**
 ```bash
 # 验证 Ollama 连接
-curl http://your-ollama-server:11435/api/tags
+curl http://地址:端口/api/tags
 
 # 检查配置
-curl http://localhost:5000/api/tranpy/config
+curl http://地址:端口/api/tranpy/config
 ```
 
 ### 性能调优
@@ -268,38 +263,6 @@ curl http://localhost:5000/api/tranpy/config
 ## 📄 许可证
 
 本项目采用 MIT 许可证 - 查看 [LICENSE](LICENSE) 文件了解详情。
-
-## 🔑API调用方式
-
-
-这是一个基于Flask的视频字幕处理服务，主要API包括：
-
-### 核心处理
-- `POST /api/process/srt/<invite_code>` - 生成SRT字幕文件
-- `POST /api/process/video/<invite_code>` - 生成带字幕的视频
-- `POST /api/batch/process/<invite_code>` - 批量处理多个文件
-
-### 状态查询
-- `GET /api/task/<task_id>` - 查询单个任务状态
-- `GET /api/batch/<batch_id>` - 查询批量任务状态
-- `GET /api/status` - 查询系统处理状态
-
-### 下载
-- `GET /api/download/srt/<filename>` - 下载SRT文件
-- `GET /api/download/video/<filename>` - 下载视频文件
-- `GET /api/batch/download/<batch_id>` - 下载批量处理结果
-
-## 配置管理
-- `GET /api/tranpy/config-ollama-api/<api_url>` - 配置Ollama API地址
-- `GET /api/tranpy/config-ollama-model/<model_name>` - 配置Ollama模型
-- `GET /api/tranpy/config` - 获取当前配置
-
-## 辅助功能
-- `GET /api/invitation/check/<invite_code>` - 验证邀请码及可用时长
-- `GET /api/whisper/health` - 检查Whisper服务状态
-- `POST /api/administrator/delete_all_cache` - 清理缓存文件
-
-系统使用邀请码控制访问，支持视频时长限制，集成Whisper进行语音识别和翻译。
 
 
 ## 📞 联系方式
