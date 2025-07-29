@@ -3,6 +3,10 @@
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Docker](https://img.shields.io/badge/docker-ready-brightgreen.svg)
 ![GPU](https://img.shields.io/badge/GPU-CUDA-orange.svg)
+![Python](https://img.shields.io/badge/python-3.8+-blue.svg)
+![GitHub stars](https://img.shields.io/github/stars/MitaHill/tranvideo)
+![GitHub forks](https://img.shields.io/github/forks/MitaHill/tranvideo)
+![GitHub issues](https://img.shields.io/github/issues/MitaHill/tranvideo)
 
 一个基于 Whisper Large V3 和 Ollama 的视频翻译项目。
 
