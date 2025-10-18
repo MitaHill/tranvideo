@@ -1,8 +1,8 @@
-# Tranvideo - 自部署的翻译视频项目
+# Tranvideo - 自部署视频翻译平台
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Docker](https://img.shields.io/badge/docker-ready-brightgreen.svg)
-![GPU](https://img.shields.io/badge/GPU-CUDA-orange.svg)
+![GPU-Memory](https://img.shields.io/badge/GPU-8GB%2B%20Optimized-orange.svg)
 ![Python](https://img.shields.io/badge/python-3.8+-blue.svg)
 ![Flask](https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white)
 ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white)
@@ -17,13 +17,14 @@
 ![GitHub language count](https://img.shields.io/github/languages/count/MitaHill/tranvideo)
 ![GitHub top language](https://img.shields.io/github/languages/top/MitaHill/tranvideo)
 
-一个基于 Whisper Large V3 和 Ollama 的视频翻译项目。
+Tranvideo 是一个基于 **Whisper Large V3** 和 **Ollama** 的开源视频翻译平台，支持自动语音识别、多语言翻译和字幕生成。
 
-将视频使用`Whisper Large V3`进行提取字幕，
+## 🎯 核心特性
 
-并使用Ollama模型进行翻译，最后输出字幕到视频中。
-
-支持批量处理和多种输出方式。
+- **🎯 智能显存管理** - 先进的显存轮询技术，8GB GPU 即可流畅运行
+- **🌍 多语言支持** - 支持多种语言的语音识别和翻译
+- **⚡ 高效处理** - 优化的流水线设计，快速处理视频文件
+- **🔧 灵活部署** - 支持 Docker 和源码部署，适配多种环境
 
 ---------------
 
@@ -57,43 +58,44 @@
 
 
  
-## ✨ 主要功能
+## ✨ 核心功能
 
-- 🎵 **提取**       从视频文件中自动提取高音频
-- 🎯 **识别**       使用`Whisper Large V3`模型对音频进行文字提取
-- 🌍 **翻译**       调用`Ollama`的API，对提取到的原文进行逐句翻译
-- 📝 **字幕**       生成 SRT 格式字幕文件
-- 🎬 **视频合成**   在***提取***、***翻译***工作完成后根据分配的任务，可以直接下载SRT字幕，也可以选择下载字幕合并过的视频文件
-- 📦 **批量处理**   支持多个视频一次性处理和批量下载
-- ⚡ **GPU 优化**   ***4G***B+GPU内存即可运行，推荐***7GB***+GPU内存
+- 🎵 **音频提取** - 从视频文件中自动提取高质量音频
+- 🎯 **语音识别** - 使用 **Whisper Large V3** 模型进行精准文字识别
+- 🌍 **智能翻译** - 调用 **Ollama** API 实现逐句翻译
+- 📝 **字幕生成** - 生成标准 SRT 格式字幕文件
+- 🎬 **视频合成** - 将字幕嵌入视频，支持多种输出格式
+- 📦 **批量处理** - 支持多文件并行处理和批量下载
+- 🚀 **显存优化** - **8GB GPU 显存**即可流畅运行，支持显存轮询管理
 
 
-## 👀实例
- - ### 条件
- - RTX 3070计算卡8GB显存规格
- - Ollama模型为 `qwen3:8b` ***开启推理***版本
- - Whisper 服务和 `qwen3:8b` 运行在同一张计算卡上，通过显存轮询管理共享8GB显存
-   
- 经过测试
- 
- 在***显存大小8G***的***RTX 3070***计算卡上，30分钟的视频只需要大约15分钟就可以处理完毕。
+## 🧪 性能实例
 
- ⚠️ 具体的翻译速度根据需要翻译的视频中有多少说话的内容决定，速度瓶颈在Ollama模型翻译上。
+### 测试环境
+- **GPU**: NVIDIA RTX 4070 Ti (8GB 显存)
+- **Ollama 模型**: `qwen3:8b` (推理模式)
+- **Whisper 模型**: `large-v3-turbo`
+- **显存管理**: 智能轮询机制
 
-### 显存轮询机制
-项目实现了智能显存轮询管理：
-- **转录阶段**：Whisper模型加载到GPU，Ollama模型卸载
-- **翻译阶段**：Whisper模型移动到CPU，Ollama模型加载到GPU
-- **优化效果**：8GB显存即可流畅运行，无需16GB
+### 处理性能
+在 **8GB 显存** 环境下，30分钟的视频处理耗时约 **15分钟**
+
+> ⚠️ **注意**: 实际处理时间受视频中语音内容密度影响，翻译阶段是主要性能瓶颈
+
+### 🎯 显存轮询机制详解
+
+项目采用先进的显存轮询技术，实现高效的内存管理：
+
+- **🎯 转录阶段** - Whisper 模型加载到 GPU，Ollama 模型被卸载
+- **🌍 翻译阶段** - Whisper 模型移动到 CPU，Ollama 模型加载到 GPU  
+- **⚡ 优化效果** - 8GB 显存即可流畅运行，无需 16GB 显存
+- **🔧 智能调度** - 自动在模型间切换，最大化 GPU 利用率
 
 ![展示1](https://p.clash.ink/i/2025/10/18/nh3nhv.png)
-![展示2](https://p.clash.ink/i/2025/07/29/qs44ay.jpg)
-![展示3](https://p.clash.ink/i/2025/07/29/qs4fa5.jpg)
-![展示4](https://p.clash.ink/i/2025/07/29/qtvs04.jpg)
 
 如图的显存占用情况
 
-![展示5](https://p.clash.ink/i/2025/07/29/qug63i.jpg)
+![展示2](https://p.clash.ink/i/2025/10/18/njcyo8.png)
 
 
 ## 🎨 Web 界面预览
@@ -107,90 +109,26 @@
 
 ### 方式一: Docker Compose（推荐）
 
-1. **创建 docker-compose.yml**
-```yaml
-version: '3.8'
-
-services:
-  ollama:
-    image: ollama/ollama:latest
-    container_name: ollama
-    network_mode: host
-    volumes:
-      - ollama_data:/root/.ollama
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              count: all
-              capabilities: [gpu]
-    restart: always
-    healthcheck:
-      test: ["CMD", "ollama", "list"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-      start_period: 30s
-
-  ollama-setup:
-    image: ollama/ollama:latest
-    container_name: ollama-setup
-    depends_on:
-      ollama:
-        condition: service_healthy
-    network_mode: host
-    entrypoint: /bin/sh
-    command: >
-      -c "
-      echo 'Waiting for Ollama service to be ready...';
-      sleep 5;
-      echo 'Pulling qwen3:8b model...';
-      ollama pull qwen3:8b;
-      echo 'Model pulled successfully';
-      "
-    environment:
-      - OLLAMA_HOST=http://localhost:11434
-    restart: "no"
-
-  tranvideo:
-    image: kindmitaishere/tranvideo-v0.6
-    container_name: tranvideo
-    depends_on:
-      ollama-setup:
-        condition: service_completed_successfully
-    network_mode: host
-    volumes:
-      - ./cache:/root/tranvideo/cache
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              count: all
-              capabilities: [gpu]
-    environment:
-      - OLLAMA_HOST=http://localhost:11434
-    restart: always
-
-volumes:
-  ollama_data:
-    driver: local
-  tranvideo_data:
-    driver: local
-```
-
-2. **启动服务**
+#### 1. 下载配置文件
 ```bash
-# 创建必要目录
-mkdir -p cache
+# 创建项目目录
+mkdir -p tranvideo && cd tranvideo
 
-# 启动容器
-docker-compose up -d
-
-# 查看启动日志
-docker-compose logs -f tranvideo
+# 下载 docker-compose.yaml
+wget https://raw.githubusercontent.com/MitaHill/tranvideo/main/docker-compose.yaml
 ```
+
+#### 2. 启动服务
+```bash
+# 启动所有服务
+sudo docker compose up -d
+
+# 查看启动状态
+sudo docker compose logs -f tranvideo
+```
+
+#### 3. 访问服务
+服务启动后，访问 `http://localhost:5000` 即可使用
 
 ### 方式二: Docker 命令
 
@@ -198,10 +136,14 @@ docker-compose logs -f tranvideo
 docker run -d \
   --name tranvideo \
   --gpus all \
+  --network host\
+  --restart always\
   -p 5000:5000 \
   -v $(pwd)/cache:/root/tranvideo/cache \
   kindmitaishere/tranvideo-v0.6
 ```
+
+注意，使用此方式需要部署`Ollama`服务，并提前拉取了对应的模型文件。
 
 ### 方式三: 源码部署
 
@@ -216,29 +158,15 @@ cd tranvideo
 
 #### 2. 下载 Whisper Large-V3-Turbo 模型
 
-由于 GitHub 仓库大小限制，Whisper 模型文件（约 1.5GB）未包含在仓库中，需要手动下载。
-
 **方式 A: 从 Hugging Face 下载（推荐）**
 
+确保你处于`tranvideo`目录下
+
 ```bash
-# 创建 whisper 目录
-mkdir -p whisper
+mkdir -p whisper && cd whisper
 
 # 下载模型文件
 wget https://huggingface.co/openai/whisper-large-v3-turbo/resolve/main/large-v3-turbo.pt -O whisper/large-v3-turbo.pt
-```
-
-或使用 Python 脚本下载：
-
-```python
-from huggingface_hub import hf_hub_download
-
-# 下载模型
-hf_hub_download(
-    repo_id="openai/whisper-large-v3-turbo",
-    filename="large-v3-turbo.pt",
-    local_dir="./whisper"
-)
 ```
 
 **方式 B: 手动下载**
@@ -249,7 +177,11 @@ hf_hub_download(
 
 **方式 C: 从官方源下载**
 
+确保你处于`tranvideo`目录下
+
 ```bash
+mkdir -p whisper && cd whisper
+
 # 使用 OpenAI 官方下载链接
 wget https://openaipublic.azureedge.net/main/whisper/models/large-v3-turbo.pt -O whisper/large-v3-turbo.pt
 ```
@@ -278,6 +210,11 @@ pip install -r requirements.txt
 #### 5. 配置环境
 
 编辑 `config/tran-py.json` 文件，配置 Ollama API 地址和模型：
+
+如果想使用线上云服务模型，请在`translator_type`项填写`openai`，并填写`openai_base_url``openai_api_key``openai_model`
+
+⚠注意：`ollama_api`为`http://127.0.0.1:11434`才会触发显存轮询、支持卸载机制，如果填写`http://localhost:11434`则不触发显存轮询，whisper模型和ollama翻译模型将会被同时在`GPU内存`中
+
 
 ```json
 {

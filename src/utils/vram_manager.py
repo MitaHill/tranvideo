@@ -8,6 +8,7 @@ import torch
 import gc
 import requests
 import time
+import re
 from typing import Optional, Dict, Any
 import sys
 import os
@@ -56,19 +57,22 @@ class VRAMManager:
         self.translator_type = translator_type
 
         # 判断是否启用显存轮询
-        # 条件: 1. translator_type为ollama  2. 使用本地地址(127.0.0.1或localhost)
+        # 条件: 1. translator_type为ollama  2. 使用127.0.0.1地址(仅127.0.0.1启用，localhost不启用)
         if translator_type == "ollama" and base_url:
-            # 检查是否为本地地址
-            is_local = any(host in base_url.lower() for host in ['127.0.0.1', 'localhost', '::1'])
+            # 检查是否为127.0.0.1地址(严格匹配，localhost不触发轮询)
+            # 使用更精确的匹配，避免误判如 192.127.0.1.100 这样的地址
+            is_127_local = bool(re.search(r'://127\.0\.0\.1[:/]', base_url))
 
-            if is_local:
+            if is_127_local:
                 self.vram_rotation_enabled = True
-                logger.info(f"✅ 已启用显存轮询管理 - Ollama本地模式")
+                logger.info(f"✅ 已启用显存轮询管理 - Ollama本地模式 (127.0.0.1)")
                 logger.info(f"   URL: {base_url}, 模型: {model}")
+                logger.info(f"   显存共享: Whisper ⇄ Ollama 自动切换")
             else:
                 self.vram_rotation_enabled = False
-                logger.info(f"❌ 禁用显存轮询 - Ollama远程模式 (Whisper常驻显存)")
+                logger.info(f"❌ 禁用显存轮询 - Ollama远程/大显存模式 (Whisper常驻显存)")
                 logger.info(f"   URL: {base_url}, 模型: {model}")
+                logger.info(f"   显存模式: Whisper常驻GPU，Ollama独立运行")
         else:
             self.vram_rotation_enabled = False
             logger.info(f"❌ 禁用显存轮询 - 使用 {translator_type} 翻译器 (Whisper常驻显存)")
