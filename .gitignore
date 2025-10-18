@@ -1,0 +1,70 @@
+# Large model files - use Git LFS or download separately
+whisper/*.pt
+whisper/*.bin
+whisper/*.onnx
+*.pth
+*.safetensors
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+venv/
+ENV/
+env/
+.venv
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+log/
+logs/
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Project specific
+db/*.json
+!db/.gitkeep
+temp/
+tmp/
+cache/
+.cache/
+
+# Environment variables
+.env
+.env.local
+.env.*.local

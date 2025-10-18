@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>常见问题 - 视频字幕处理系统</title>
+    <link rel="stylesheet" href="css/faq.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>常见问题</h1>
+            <div class="nav-links">
+                <a href="index.html" class="btn btn-primary">返回主页</a>
+                <a href="api-docs.html" class="btn btn-secondary">API 文档</a>
+            </div>
+        </div>
+
+        <div class="search-section">
+            <input type="text" id="searchInput" class="search-input" placeholder="搜索问题...">
+            <div class="search-tips">💡 提示：您可以输入关键词快速查找相关问题</div>
+        </div>
+
+        <div class="content">
+            <div class="category" data-category="basic">
+                <h2 class="category-title">基础使用</h2>
+
+                <div class="faq-item" data-keywords="邀请码 验证 激活">
+                    <div class="faq-question" onclick="toggleAnswer(this)">
+                        <span>如何获取和使用邀请码？</span>
+                        <span class="toggle-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>邀请码由系统管理员分发。获得邀请码后：</p>
+                        <ol>
+                            <li>在主页输入邀请码</li>
+                            <li>点击"验证"按钮</li>
+                            <li>验证成功后即可使用所有功能</li>
+                        </ol>
+                        <p>邀请码有时间限制，请及时使用。</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-keywords="文件格式 支持 视频">
+                    <div class="faq-question" onclick="toggleAnswer(this)">
+                        <span>支持哪些视频文件格式？</span>
+                        <span class="toggle-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>系统支持常见的视频格式：</p>
+                        <ul>
+                            <li>MP4、MOV、AVI</li>
+                            <li>MKV、FLV、WMV</li>
+                            <li>WebM、3GP</li>
+                        </ul>
+                        <p>建议使用MP4格式以获得最佳兼容性。</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-keywords="文件大小 限制">
+                    <div class="faq-question" onclick="toggleAnswer(this)">
+                        <span>视频文件大小有限制吗？</span>
+                        <span class="toggle-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>文件大小限制取决于您的邀请码时长额度：</p>
+                        <ul>
+                            <li>单个文件最大2GB</li>
+                            <li>批量处理总计不超过5GB</li>
+                            <li>处理时间不能超过邀请码剩余时长</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category" data-category="processing">
+                <h2 class="category-title">处理相关</h2>
+
+                <div class="faq-item" data-keywords="字幕 准确性 质量">
+                    <div class="faq-question" onclick="toggleAnswer(this)">
+                        <span>字幕识别准确性如何？</span>
+                        <span class="toggle-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>字幕准确性取决于多个因素：</p>
+                        <ul>
+                            <li><strong>音频质量</strong>：清晰的音频效果更好</li>
+                            <li><strong>语言</strong>：中文和英文支持最佳</li>
+                            <li><strong>背景噪音</strong>：噪音少准确性更高</li>
+                            <li><strong>语速</strong>：正常语速识别效果最佳</li>
+                        </ul>
+                        <p>一般情况下准确率可达85-95%。</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-keywords="处理时间 速度">
+                    <div class="faq-question" onclick="toggleAnswer(this)">
+                        <span>处理需要多长时间？</span>
+                        <span class="toggle-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>处理时间因文件而异：</p>
+                        <ul>
+                            <li><strong>字幕生成</strong>：约为视频时长的0.3-0.5倍</li>
+                            <li><strong>视频合成</strong>：约为视频时长的0.8-1.2倍</li>
+                            <li><strong>队列等待</strong>：高峰期可能需要排队</li>
+                        </ul>
+                        <p>可在状态查询页面查看实时进度。</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-keywords="批量处理 多文件">
+                    <div class="faq-question" onclick="toggleAnswer(this)">
+                        <span>批量处理有什么限制？</span>
+                        <span class="toggle-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>批量处理限制：</p>
+                        <ul>
+                            <li>最多同时处理20个文件</li>
+                            <li>总文件大小不超过5GB</li>
+                            <li>所有文件采用相同处理模式</li>
+                            <li>按顺序依次处理，非并行</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category" data-category="technical">
+                <h2 class="category-title">技术问题</h2>
+
+                <div class="faq-item" data-keywords="任务失败 错误">
+                    <div class="faq-question" onclick="toggleAnswer(this)">
+                        <span>任务处理失败怎么办？</span>
+                        <span class="toggle-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>任务失败的常见原因和解决方法：</p>
+                        <ul>
+                            <li><strong>文件损坏</strong>：重新上传原始文件</li>
+                            <li><strong>格式不支持</strong>：转换为MP4格式</li>
+                            <li><strong>音频质量差</strong>：提供更清晰的音频</li>
+                            <li><strong>系统繁忙</strong>：稍后重试</li>
+                        </ul>
+                        <p>如问题持续，请联系管理员。</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-keywords="下载 文件 过期">
+                    <div class="faq-question" onclick="toggleAnswer(this)">
+                        <span>处理完成的文件何时过期？</span>
+                        <span class="toggle-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>文件保存策略：</p>
+                        <ul>
+                            <li>处理完成后保存24小时</li>
+                            <li>下载后保存3小时</li>
+                            <li>超时自动删除</li>
+                            <li>建议及时下载并备份</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-keywords="API 接口 开发">
+                    <div class="faq-question" onclick="toggleAnswer(this)">
+                        <span>如何通过API接口使用系统？</span>
+                        <span class="toggle-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>API使用指南：</p>
+                        <ol>
+                            <li>查看<a href="api-docs.html">API文档</a>了解接口详情</li>
+                            <li>使用有效邀请码调用接口</li>
+                            <li>通过轮询查询任务状态</li>
+                            <li>任务完成后下载结果文件</li>
+                        </ol>
+                        <p>所有API都需要有效的邀请码。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category" data-category="troubleshooting">
+                <h2 class="category-title">故障排除</h2>
+
+                <div class="faq-item" data-keywords="上传失败 网络">
+                    <div class="faq-question" onclick="toggleAnswer(this)">
+                        <span>文件上传失败怎么办？</span>
+                        <span class="toggle-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>上传失败排查步骤：</p>
+                        <ol>
+                            <li>检查网络连接是否稳定</li>
+                            <li>确认文件大小不超过限制</li>
+                            <li>验证文件格式是否支持</li>
+                            <li>清除浏览器缓存重试</li>
+                            <li>尝试更换浏览器</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-keywords="页面无响应 卡顿">
+                    <div class="faq-question" onclick="toggleAnswer(this)">
+                        <span>页面无响应或加载缓慢？</span>
+                        <span class="toggle-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>性能优化建议：</p>
+                        <ul>
+                            <li>使用Chrome或Firefox等现代浏览器</li>
+                            <li>关闭不必要的浏览器标签页</li>
+                            <li>检查网络状况</li>
+                            <li>清除浏览器缓存和Cookie</li>
+                            <li>刷新页面重试</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-keywords="邀请码过期 时间不足">
+                    <div class="faq-question" onclick="toggleAnswer(this)">
+                        <span>邀请码时间不足或已过期？</span>
+                        <span class="toggle-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>时间管理建议：</p>
+                        <ul>
+                            <li>处理前检查剩余时长</li>
+                            <li>优先处理较短的视频</li>
+                            <li>避免同时处理多个大文件</li>
+                            <li>联系管理员续期或获取新邀请码</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category" data-category="contact">
+                <h2 class="category-title">联系支持</h2>
+
+                <div class="faq-item" data-keywords="联系 支持 帮助">
+                    <div class="faq-question" onclick="toggleAnswer(this)">
+                        <span>如何联系技术支持？</span>
+                        <span class="toggle-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>获取帮助的方式：</p>
+                        <ul>
+                            <li><strong>查看FAQ</strong>：首先查看本页面</li>
+                            <li><strong>API文档</strong>：技术问题参考API文档</li>
+                            <li><strong>系统管理员</strong>：联系部署系统的管理员</li>
+                            <li><strong>错误信息</strong>：保存具体错误信息以便排查</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>如果您的问题未在此列出，请联系系统管理员获取帮助。</p>
+        </div>
+    </div>
+
+    <script src="js/faq.js"></script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+flask>=2.0.0
+werkzeug>=2.0.0
+openai-whisper>=20231117
+requests>=2.25.0
+psutil>=5.8.0
+tqdm>=4.60.0
+transformers>=4.20.0
+numpy>=1.21.0
+soundfile>=0.10.0

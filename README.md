@@ -162,6 +162,110 @@ docker run -d \
   kindmitaishere/tranvideo-v1.0:latest
 ```
 
+### 方式三: 源码部署
+
+> ⚠️ **重要提示**: 通过源码部署时，需要手动下载 Whisper 模型文件
+
+#### 1. 克隆仓库
+
+```bash
+git clone https://github.com/MitaHill/tranvideo.git
+cd tranvideo
+```
+
+#### 2. 下载 Whisper Large-V3-Turbo 模型
+
+由于 GitHub 仓库大小限制，Whisper 模型文件（约 1.5GB）未包含在仓库中，需要手动下载。
+
+**方式 A: 从 Hugging Face 下载（推荐）**
+
+```bash
+# 创建 whisper 目录
+mkdir -p whisper
+
+# 下载模型文件
+wget https://huggingface.co/openai/whisper-large-v3-turbo/resolve/main/large-v3-turbo.pt -O whisper/large-v3-turbo.pt
+```
+
+或使用 Python 脚本下载：
+
+```python
+from huggingface_hub import hf_hub_download
+
+# 下载模型
+hf_hub_download(
+    repo_id="openai/whisper-large-v3-turbo",
+    filename="large-v3-turbo.pt",
+    local_dir="./whisper"
+)
+```
+
+**方式 B: 手动下载**
+
+1. 访问 [Hugging Face - Whisper Large V3 Turbo](https://huggingface.co/openai/whisper-large-v3-turbo)
+2. 下载 `large-v3-turbo.pt` 文件
+3. 将文件放置到项目的 `whisper/` 目录下
+
+**方式 C: 从官方源下载**
+
+```bash
+# 使用 OpenAI 官方下载链接
+wget https://openaipublic.azureedge.net/main/whisper/models/large-v3-turbo.pt -O whisper/large-v3-turbo.pt
+```
+
+#### 3. 验证模型文件
+
+确保模型文件位置正确：
+
+```bash
+ls -lh whisper/large-v3-turbo.pt
+# 应该显示文件大小约为 1.5GB
+```
+
+#### 4. 安装依赖
+
+```bash
+# 创建虚拟环境（推荐）
+python -m venv venv
+source venv/bin/activate  # Linux/Mac
+# 或 venv\Scripts\activate  # Windows
+
+# 安装依赖
+pip install -r requirements.txt
+```
+
+#### 5. 配置环境
+
+编辑 `config/tran-py.json` 文件，配置 Ollama API 地址和模型：
+
+```json
+{
+  "ollama_api": "http://your-ollama-server:11434",
+  "model": "qwen3:8b"
+}
+```
+
+#### 6. 启动服务
+
+```bash
+python main.py
+```
+
+服务将在 `http://localhost:5000` 启动。
+
+#### 目录结构说明
+
+```
+tranvideo/
+├── whisper/
+│   └── large-v3-turbo.pt    # 需要手动下载的模型文件
+├── config/
+│   └── tran-py.json          # 配置文件
+├── src/                      # 源代码
+├── main.py                   # 主程序入口
+└── requirements.txt          # Python 依赖
+```
+
 ## ⚙️ 初始配置
 
 ### 1. 配置 Ollama API
