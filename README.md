@@ -29,16 +29,13 @@ Tranvideo 是一个基于 **Whisper Large V3** 和 **Ollama** 的开源视频翻
 ---------------
 
 
-[API文档](https://tranvideo.clash.ink/api-docs.html)
-[米塔山的网站](https://clash.ink)
-[米塔山的博客](https://b.clash.ink)
-[米塔山的论坛](https://cnm.clash.ink)
+### 🔗 相关链接
 
-公开API地址
-```https://tranvideo.clash.ink/api```
-
-公开的网站
-```https://tranvideo.clash.ink```
+- [📖 API 文档](https://tranvideo.clash.ink/api-docs.html)
+- [🌐 官方网站](https://tranvideo.clash.ink)
+- [💻 米塔山的网站](https://clash.ink)
+- [📝 技术博客](https://b.clash.ink)
+- [💬 社区论坛](https://cnm.clash.ink)
 
 ### 获取公开API的邀请号码
 
@@ -47,11 +44,11 @@ Tranvideo 是一个基于 **Whisper Large V3** 和 **Ollama** 的开源视频翻
  **请注意，获取公开API的邀请号码不是必须的。因为你可以自行部署，可以通过源码运行，也可以通过```docker```的方式运行（***推荐***）***
 
 
- ***公开邀请码为`kindmita`，在公开的API地址中***
+ - **公开邀请码**: `kindmita` (在公开 API 中使用)
 
 
 
- [前往哔哩哔哩获取通过Docker方式部署的方法](https://www.bilibili.com/video/BV1H7gSznE46)
+ [📺 哔哩哔哩 Docker 部署教程](https://www.bilibili.com/video/BV1H7gSznE46)
 
 
 ---------------
@@ -130,27 +127,26 @@ sudo docker compose logs -f tranvideo
 #### 3. 访问服务
 服务启动后，访问 `http://localhost:5000` 即可使用
 
-### 方式二: Docker 命令
+### 方式二: Docker 命令（需要手动配置 Ollama）
 
 ```bash
 docker run -d \
   --name tranvideo \
   --gpus all \
-  --network host\
-  --restart always\
+  --network host \
+  --restart always \
   -p 5000:5000 \
   -v $(pwd)/cache:/root/tranvideo/cache \
   kindmitaishere/tranvideo-v0.6
 ```
 
-注意，使用此方式需要部署`Ollama`服务，并提前拉取了对应的模型文件。
+> ⚠️ **注意**: 此方式需要单独部署 **Ollama** 服务并提前拉取模型文件
 
 ### 方式三: 源码部署
 
 > ⚠️ **重要提示**: 通过源码部署时，需要手动下载 Whisper 模型文件
 
 #### 1. 克隆仓库
-
 ```bash
 git clone https://github.com/MitaHill/tranvideo.git
 cd tranvideo
@@ -159,31 +155,28 @@ cd tranvideo
 #### 2. 下载 Whisper Large-V3-Turbo 模型
 
 **方式 A: 从 Hugging Face 下载（推荐）**
-
-确保你处于`tranvideo`目录下
-
 ```bash
-mkdir -p whisper && cd whisper
+# 在项目根目录执行
+mkdir -p whisper
+cd whisper
 
 # 下载模型文件
-wget https://huggingface.co/openai/whisper-large-v3-turbo/resolve/main/large-v3-turbo.pt -O whisper/large-v3-turbo.pt
+wget https://huggingface.co/openai/whisper-large-v3-turbo/resolve/main/large-v3-turbo.pt -O large-v3-turbo.pt
 ```
 
 **方式 B: 手动下载**
-
 1. 访问 [Hugging Face - Whisper Large V3 Turbo](https://huggingface.co/openai/whisper-large-v3-turbo)
 2. 下载 `large-v3-turbo.pt` 文件
 3. 将文件放置到项目的 `whisper/` 目录下
 
 **方式 C: 从官方源下载**
-
-确保你处于`tranvideo`目录下
-
 ```bash
-mkdir -p whisper && cd whisper
+# 在项目根目录执行
+mkdir -p whisper
+cd whisper
 
 # 使用 OpenAI 官方下载链接
-wget https://openaipublic.azureedge.net/main/whisper/models/large-v3-turbo.pt -O whisper/large-v3-turbo.pt
+wget https://openaipublic.azureedge.net/main/whisper/models/large-v3-turbo.pt -O large-v3-turbo.pt
 ```
 
 #### 3. 验证模型文件
@@ -209,11 +202,7 @@ pip install -r requirements.txt
 
 #### 5. 配置环境
 
-编辑 `config/tran-py.json` 文件，配置 Ollama API 地址和模型：
-
-如果想使用线上云服务模型，请在`translator_type`项填写`openai`，并填写`openai_base_url``openai_api_key``openai_model`
-
-⚠注意：`ollama_api`为`http://127.0.0.1:11434`才会触发显存轮询、支持卸载机制，如果填写`http://localhost:11434`则不触发显存轮询，whisper模型和ollama翻译模型将会被同时在`GPU内存`中
+编辑 `config/tran-py.json` 文件，配置翻译服务和模型：
 
 
 ```json
@@ -226,6 +215,23 @@ pip install -r requirements.txt
   "openai_model": "deepseek-ai/DeepSeek-R1-0528-Qwen3-8B"
 }
 ```
+
+### 🔧 配置说明
+
+#### 翻译器类型选择
+- **`"translator_type": "ollama"`** - 使用本地 Ollama 服务
+- **`"translator_type": "openai"`** - 使用 OpenAI 兼容的云服务
+
+#### 显存轮询触发条件
+> ⚠️ **重要**: 显存轮询仅在以下条件触发：
+> - `translator_type` 设置为 `"ollama"`
+> - `ollama_api` 使用 **`http://127.0.0.1:11434`** (localhost 不会触发)
+> - 本地部署的 Ollama 服务
+
+#### 示例配置
+- **本地 Ollama**: 启用显存轮询，8GB 显存即可运行
+- **远程 Ollama**: 禁用显存轮询，需要更多显存
+- **OpenAI API**: 禁用显存轮询，仅需 Whisper 模型显存
 
 #### 6. 启动服务
 
@@ -327,9 +333,9 @@ http://地址:端口/api/tranpy/config
 ## 🛠️ 系统要求
 
 ### 硬件要求
-- **CPU**: 4核心以上
+- **CPU**: 4核心及以上
 - **内存**: 8GB RAM（推荐 16GB）
-- **显存**: 8GB VRAM 或更多（支持显存轮询优化）
+- **显存**: **8GB VRAM** 或更多（支持显存轮询优化）
 - **存储**: 32GB 可用空间
 - **GPU**: 支持 CUDA 的 NVIDIA 显卡
 
@@ -339,11 +345,11 @@ http://地址:端口/api/tranpy/config
 - NVIDIA Container Runtime
 - CUDA 11.0+
 
-### 显存管理特性
-- **智能轮询**：自动在Whisper和Ollama模型间切换GPU显存
-- **内存优化**：使用Whisper Large-V3-Turbo模型，减少内存占用
-- **自动清理**：任务完成后自动释放显存资源
-- **8GB兼容**：优化后的代码可以在8GB显存环境下稳定运行
+### 🎯 显存管理特性
+- **智能轮询** - 自动在 Whisper 和 Ollama 模型间切换 GPU 显存
+- **内存优化** - 使用 Whisper Large-V3-Turbo 模型，减少内存占用
+- **自动清理** - 任务完成后自动释放显存资源
+- **8GB 兼容** - 优化后的代码可在 8GB 显存环境下稳定运行
 
 ### 日志管理
 
@@ -351,18 +357,18 @@ http://地址:端口/api/tranpy/config
 - 日志文件位置: `./logs/`
 - 支持实时日志查看
 
-### 性能优化
+### ⚡ 性能优化
 
-1. **GPU 显存优化**
-   - 显存轮询管理：自动在Whisper和Ollama模型间切换，8GB显存即可运行
-   - Whisper模型使用90%显存，turbo版本优化
-   - 自动缓存清理和垃圾回收
-   - 经测试，空载状态下显存占用为6.5-7GB
+#### 1. GPU 显存优化
+- **显存轮询管理** - 自动在 Whisper 和 Ollama 模型间切换，8GB 显存即可运行
+- **内存限制优化** - Whisper 模型使用 90% 显存，turbo 版本进一步优化
+- **自动缓存清理** - 任务完成后自动执行垃圾回收
+- **实测性能** - 空载状态下显存占用为 6.5-7GB
 
-2. **并发处理**
-   - 单任务队列，避免资源冲突
-   - 显存轮询机制确保内存高效利用
-   - 可以充分利用常驻显存的模型，实现快速调用处理视频。
+#### 2. 并发处理优化
+- **单任务队列** - 避免资源冲突，确保任务处理的稳定性
+- **显存轮询机制** - 最大化 GPU 内存利用效率
+- **模型预热** - 减少模型加载时间，提升处理速度
 
 ## 🐛 故障排除
 
@@ -393,13 +399,13 @@ curl http://地址:端口/api/tags
 curl http://地址:端口/api/tranpy/config
 ```
 
-### 性能调优
+### 🎯 性能调优建议
 
-- 根据显卡性能调整批处理大小
-- 监控显存使用情况
-- 适当调整并发任务数量
-- 显存轮询机制自动优化内存使用
-- 8GB显存即可运行，无需16GB
+- **显卡性能** - 根据显卡性能调整批处理大小
+- **显存监控** - 实时监控 GPU 显存使用情况
+- **并发控制** - 适当调整并发任务数量
+- **轮询优化** - 显存轮询机制自动优化内存使用
+- **硬件要求** - **8GB 显存**即可运行，无需 16GB
 
 ## 🤝 贡献指南
 
