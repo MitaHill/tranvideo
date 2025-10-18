@@ -65,23 +65,28 @@
 - 📝 **字幕**       生成 SRT 格式字幕文件
 - 🎬 **视频合成**   在***提取***、***翻译***工作完成后根据分配的任务，可以直接下载SRT字幕，也可以选择下载字幕合并过的视频文件
 - 📦 **批量处理**   支持多个视频一次性处理和批量下载
-- ⚡ **GPU 加速**   充分利用 CUDA 进行高效处理。
+- ⚡ **GPU 优化**   ***4G***B+GPU内存即可运行，推荐***7GB***+GPU内存
 
 
 ## 👀实例
  - ### 条件
- - V100计算卡16GB显存规格
- - Ollama模型为 `qwen:8b` ***开启推理***版本
- - Whisper 服务和 `qwen:8b` 运行在同一张计算卡上，共享着16GB显存
+ - RTX 3070计算卡8GB显存规格
+ - Ollama模型为 `qwen3:8b` ***开启推理***版本
+ - Whisper 服务和 `qwen3:8b` 运行在同一张计算卡上，通过显存轮询管理共享8GB显存
    
  经过测试
  
- 在***显存大小16G***的***V100***计算卡上，30分钟的视频只需要大约10分钟就可以处理完毕。
+ 在***显存大小8G***的***RTX 3070***计算卡上，30分钟的视频只需要大约15分钟就可以处理完毕。
 
  ⚠️ 具体的翻译速度根据需要翻译的视频中有多少说话的内容决定，速度瓶颈在Ollama模型翻译上。
- 
 
-![展示1](https://p.clash.ink/i/2025/07/29/qs3z8r.jpg)
+### 显存轮询机制
+项目实现了智能显存轮询管理：
+- **转录阶段**：Whisper模型加载到GPU，Ollama模型卸载
+- **翻译阶段**：Whisper模型移动到CPU，Ollama模型加载到GPU
+- **优化效果**：8GB显存即可流畅运行，无需16GB
+
+![展示1](https://p.clash.ink/i/2025/10/18/nh3nhv.png)
 ![展示2](https://p.clash.ink/i/2025/07/29/qs44ay.jpg)
 ![展示3](https://p.clash.ink/i/2025/07/29/qs4fa5.jpg)
 ![展示4](https://p.clash.ink/i/2025/07/29/qtvs04.jpg)
@@ -107,39 +112,78 @@
 version: '3.8'
 
 services:
-  tranvideo:
-    image: docker.io/kindmitaishere/tranvideo-v1.0:latest
-    container_name: tranvideo-app
-    restart: unless-stopped
-    
-    ports:
-      - "5000:5000"
-      - "2222:22"
-    
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama
+    network_mode: host
     volumes:
-      - ./data:/root/tranvideo/cache
-      - ./logs:/root/tranvideo/log
-      - ./config:/root/tranvideo/config
-    
-    environment:
-      - NVIDIA_VISIBLE_DEVICES=all
-      - NVIDIA_DRIVER_CAPABILITIES=compute,utility
-    
+      - ollama_data:/root/.ollama
     deploy:
       resources:
-        limits:
-          memory: 8G
         reservations:
           devices:
             - driver: nvidia
-              count: 1
+              count: all
               capabilities: [gpu]
+    restart: always
+    healthcheck:
+      test: ["CMD", "ollama", "list"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  ollama-setup:
+    image: ollama/ollama:latest
+    container_name: ollama-setup
+    depends_on:
+      ollama:
+        condition: service_healthy
+    network_mode: host
+    entrypoint: /bin/sh
+    command: >
+      -c "
+      echo 'Waiting for Ollama service to be ready...';
+      sleep 5;
+      echo 'Pulling qwen3:8b model...';
+      ollama pull qwen3:8b;
+      echo 'Model pulled successfully';
+      "
+    environment:
+      - OLLAMA_HOST=http://localhost:11434
+    restart: "no"
+
+  tranvideo:
+    image: kindmitaishere/tranvideo-v0.6
+    container_name: tranvideo
+    depends_on:
+      ollama-setup:
+        condition: service_completed_successfully
+    network_mode: host
+    volumes:
+      - ./cache:/root/tranvideo/cache
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    environment:
+      - OLLAMA_HOST=http://localhost:11434
+    restart: always
+
+volumes:
+  ollama_data:
+    driver: local
+  tranvideo_data:
+    driver: local
 ```
 
 2. **启动服务**
 ```bash
 # 创建必要目录
-mkdir -p data logs config
+mkdir -p cache
 
 # 启动容器
 docker-compose up -d
@@ -152,14 +196,11 @@ docker-compose logs -f tranvideo
 
 ```bash
 docker run -d \
-  --name tranvideo-app \
+  --name tranvideo \
   --gpus all \
   -p 5000:5000 \
-  -p 2222:22 \
-  -v $(pwd)/data:/root/tranvideo/cache \
-  -v $(pwd)/logs:/root/tranvideo/log \
-  -v $(pwd)/config:/root/tranvideo/config \
-  kindmitaishere/tranvideo-v1.0:latest
+  -v $(pwd)/cache:/root/tranvideo/cache \
+  kindmitaishere/tranvideo-v0.6
 ```
 
 ### 方式三: 源码部署
@@ -240,8 +281,12 @@ pip install -r requirements.txt
 
 ```json
 {
-  "ollama_api": "http://your-ollama-server:11434",
-  "model": "qwen3:8b"
+  "translator_type": "ollama",
+  "ollama_api": "http://127.0.0.1:11434",
+  "ollama_model": "qwen3:8b",
+  "openai_base_url": "https://api.siliconflow.cn/v1",
+  "openai_api_key": "apikey",
+  "openai_model": "deepseek-ai/DeepSeek-R1-0528-Qwen3-8B"
 }
 ```
 
@@ -347,7 +392,7 @@ http://地址:端口/api/tranpy/config
 ### 硬件要求
 - **CPU**: 4核心以上
 - **内存**: 8GB RAM（推荐 16GB）
-- **显存**: 16GB VRAM 或更多
+- **显存**: 8GB VRAM 或更多（支持显存轮询优化）
 - **存储**: 32GB 可用空间
 - **GPU**: 支持 CUDA 的 NVIDIA 显卡
 
@@ -356,6 +401,12 @@ http://地址:端口/api/tranpy/config
 - Docker Compose 2.0+
 - NVIDIA Container Runtime
 - CUDA 11.0+
+
+### 显存管理特性
+- **智能轮询**：自动在Whisper和Ollama模型间切换GPU显存
+- **内存优化**：使用Whisper Large-V3-Turbo模型，减少内存占用
+- **自动清理**：任务完成后自动释放显存资源
+- **8GB兼容**：优化后的代码可以在8GB显存环境下稳定运行
 
 ### 日志管理
 
@@ -366,12 +417,14 @@ http://地址:端口/api/tranpy/config
 ### 性能优化
 
 1. **GPU 显存优化**
-   - Whisper 模型内存使用限制为 60%
+   - 显存轮询管理：自动在Whisper和Ollama模型间切换，8GB显存即可运行
+   - Whisper模型使用90%显存，turbo版本优化
    - 自动缓存清理和垃圾回收
    - 经测试，空载状态下显存占用为6.5-7GB
 
 2. **并发处理**
    - 单任务队列，避免资源冲突
+   - 显存轮询机制确保内存高效利用
    - 可以充分利用常驻显存的模型，实现快速调用处理视频。
 
 ## 🐛 故障排除
@@ -408,6 +461,8 @@ curl http://地址:端口/api/tranpy/config
 - 根据显卡性能调整批处理大小
 - 监控显存使用情况
 - 适当调整并发任务数量
+- 显存轮询机制自动优化内存使用
+- 8GB显存即可运行，无需16GB
 
 ## 🤝 贡献指南
 
