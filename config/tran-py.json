@@ -1,4 +1,0 @@
-{
-  "ollama_api": "http://192.168.9.115:11434",
-  "ollama_model": "qwen3:8b"
-}
