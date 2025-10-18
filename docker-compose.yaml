@@ -1,0 +1,69 @@
+version: '3.8'
+
+services:
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama
+    network_mode: host
+    volumes:
+      - ollama_data:/root/.ollama
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    restart: always
+    healthcheck:
+      test: ["CMD", "ollama", "list"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  ollama-setup:
+    image: ollama/ollama:latest
+    container_name: ollama-setup
+    depends_on:
+      ollama:
+        condition: service_healthy
+    network_mode: host
+    entrypoint: /bin/sh
+    command: >
+      -c "
+      echo 'Waiting for Ollama service to be ready...';
+      sleep 5;
+      echo 'Pulling qwen3:8b model...';
+      ollama pull qwen3:8b;
+      echo 'Model pulled successfully';
+      "
+    environment:
+      - OLLAMA_HOST=http://localhost:11434
+    restart: "no"
+
+  tranvideo:
+    image: kindmitaishere/tranvideo-v0.6
+    container_name: tranvideo
+    depends_on:
+      ollama-setup:
+        condition: service_completed_successfully
+    network_mode: host
+    volumes:
+      - ./cache:/root/tranvideo/cache
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    environment:
+      - OLLAMA_HOST=http://localhost:11434
+    restart: always
+
+volumes:
+  ollama_data:
+    driver: local
+  tranvideo_data:
+    driver: local
