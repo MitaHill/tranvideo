@@ -43,7 +43,7 @@ services:
     restart: "no"
 
   tranvideo:
-    image: kindmitaishere/tranvideo-v0.6
+    image: kindmitaishere/tranvideo:0.6.0
     container_name: tranvideo
     depends_on:
       ollama-setup:

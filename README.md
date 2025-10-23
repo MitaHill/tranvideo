@@ -441,8 +441,79 @@ curl http://地址:端口/api/tranpy/config
 
 
 
-⭐ 如果这个项目对你有帮助，请给一个 Star！
+## 📋 版本信息
 
+- **当前版本**: v0.6.0
+- **发布日期**: 2025年10月
+- **Docker镜像**: `kindmitaishere/tranvideo:0.6.0`
+- **下一版本**: v1.0.0 (正式版，计划中)
 
+### 版本历史
 
-`tranvideo 2.0` 将考虑进行发布。
+查看 [CHANGELOG.md](CHANGELOG.md) 了解详细的版本变更记录。
+
+## 📦 发行说明
+
+### 当前版本 (v0.6.0)
+
+**主要特性**:
+- 🎯 智能显存轮询管理 - 8GB显存即可运行
+- 🌍 多语言支持 - Whisper + Ollama/OpenAI
+- 📦 批量处理 - 支持多文件并行处理
+- 🎬 视频合成 - 自动嵌入字幕
+- 💾 任务管理 - SQLite数据库持久化
+
+**Docker 镜像标签**:
+```bash
+# 推荐使用精确版本号
+docker pull kindmitaishere/tranvideo:0.6.0
+
+# 或使用 latest 标签 (当前指向 0.6.0)
+docker pull kindmitaishere/tranvideo:latest
+```
+
+### 版本路线图
+
+| 版本 | 状态 | 计划时间 | 主要内容 |
+|------|------|---------|---------|
+| v0.6.0 | ✅ 已发布 | 2025-10 | 显存优化、批量处理 |
+| v0.7.0 | 📋 规划中 | 2025-Q2 | 性能优化、新功能 |
+| v0.8.0 | 📋 规划中 | 2025-Q3 | UI增强、API扩展 |
+| v1.0.0 | 🎯 目标版本 | 2025-Q4 | 正式版发布、生产就绪 |
+
+查看 [VERSION_POLICY.md](VERSION_POLICY.md) 了解版本管理策略。
+
+### 发布流程
+
+项目采用规范的版本管理和发布流程:
+
+- **版本号**: 遵循 [语义化版本 2.0.0](https://semver.org/lang/zh-CN/)
+- **发布流程**: 详见 [RELEASE_GUIDE.md](RELEASE_GUIDE.md)
+- **Git 分支**: main(稳定版) / develop(开发版)
+- **Docker 镜像**: 每个版本都会发布对应的镜像标签
+
+## 📚 文档资源
+
+### 官方文档
+- 📖 [项目 Wiki](docs/wiki/Home.md) - 完整的使用文档
+- 🚀 [快速开始](docs/wiki/Quick-Start.md) - 5分钟快速部署
+- 🔧 [显存管理](docs/wiki/VRAM-Management.md) - 显存优化详解
+- 📡 [API 文档](docs/wiki/API-Overview.md) - RESTful API 接口
+
+### 项目管理
+- 📝 [更新日志](CHANGELOG.md) - 版本变更记录
+- 📋 [版本策略](VERSION_POLICY.md) - 版本管理规范
+- 🚢 [发布指南](RELEASE_GUIDE.md) - 发布流程说明
+- 🤝 [贡献指南](CONTRIBUTING.md) - 参与贡献指南
+
+### 在线资源
+- 🌐 [官方网站](https://tranvideo.clash.ink) - 项目主页
+- 📖 [在线API文档](https://tranvideo.clash.ink/api-docs.html) - 详细的API文档
+- 📝 [技术博客](https://b.clash.ink) - 技术文章和教程
+- 💬 [社区论坛](https://cnm.clash.ink) - 讨论和反馈
+
+## ⭐ Star History
+
+如果这个项目对你有帮助，请给一个 Star！
+
+[![Star History Chart](https://api.star-history.com/svg?repos=MitaHill/tranvideo&type=Date)](https://star-history.com/#MitaHill/tranvideo&Date)
