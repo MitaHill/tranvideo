@@ -31,7 +31,7 @@ Tranvideo 是一个基于 **Whisper Large V3** 和 **Ollama** 的开源视频翻
 
 ### 🔗 相关链接
 
-- [📖 API 文档](https://tranvideo.clash.ink/api-docs.html)
+- [📖 API 文档](http://39.104.48.129:5000/api-docs.html)
 - [🌐 官方网站](https://tranvideo.clash.ink)
 - [💻 米塔山的网站](https://clash.ink)
 - [📝 技术博客](https://b.clash.ink)
